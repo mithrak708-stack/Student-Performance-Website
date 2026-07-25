@@ -25,10 +25,9 @@
 🎓 Student Performance Prediction
 </a>
 
-<button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
 <span class="navbar-toggler-icon"></span>
 </button>
-
 
 <div class="collapse navbar-collapse" id="menu">
 
@@ -57,7 +56,6 @@
 </div>
 </nav>
 
-
 <!-- Hero -->
 
 <section class="hero py-5">
@@ -72,12 +70,10 @@
 Predict Student Performance
 </h1>
 
-
 <p class="lead mt-3">
 Machine Learning based Student Performance Prediction System.
 Predict academic performance using study habits and attendance.
 </p>
-
 
 <a href="#predict" class="btn btn-warning btn-lg mt-3">
 Predict Now
@@ -85,12 +81,14 @@ Predict Now
 
 </div>
 
-
 <div class="col-lg-6 text-center">
 
 <img
 src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=700"
-class="img-fluid rounded shadow">
+class="img-fluid rounded shadow"><img
+src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=700"
+class="img-fluid rounded shadow"
+alt="Students studying together">
 
 </div>
 
@@ -100,8 +98,6 @@ class="img-fluid rounded shadow">
 
 </section>
 
-
-
 <!-- Prediction Form -->
 
 <section id="predict" class="container my-5">
@@ -110,17 +106,13 @@ class="img-fluid rounded shadow">
 
 <div class="card-body p-5">
 
-
 <h2 class="text-center mb-4">
 📊 Student Performance Prediction
 </h2>
 
-
 <form action="/predict" method="POST">
 
-
 <div class="row">
-
 
 <div class="col-md-6 mb-3">
 
@@ -130,7 +122,6 @@ class="img-fluid rounded shadow">
 
 </div>
 
-
 <div class="col-md-6 mb-3">
 
 <label>Attendance (%)</label>
@@ -138,7 +129,6 @@ class="img-fluid rounded shadow">
 <input type="number" class="form-control" name="attendance" required>
 
 </div>
-
 
 <div class="col-md-6 mb-3">
 
@@ -148,7 +138,6 @@ class="img-fluid rounded shadow">
 
 </div>
 
-
 <div class="col-md-6 mb-3">
 
 <label>Sleep Hours</label>
@@ -156,7 +145,6 @@ class="img-fluid rounded shadow">
 <input type="number" class="form-control" name="sleep_hours" required>
 
 </div>
-
 
 <div class="col-md-12 mb-3">
 
@@ -166,8 +154,6 @@ class="img-fluid rounded shadow">
 
 </div>
 
-
-
 <div class="text-center">
 
 <button class="btn btn-primary btn-lg px-5">
@@ -175,10 +161,6 @@ class="img-fluid rounded shadow">
 </button>
 
 </div>
-
-
-
-<!-- Result Display -->
 
 {% if prediction %}
 
@@ -202,8 +184,6 @@ class="img-fluid rounded shadow">
 
 {% endif %}
 
-
-
 {% if prediction_text %}
 
 <div class="alert alert-danger text-center mt-4">
@@ -214,12 +194,9 @@ class="img-fluid rounded shadow">
 
 {% endif %}
 
-
-
 </div>
 
 </form>
-
 
 </div>
 
@@ -227,6 +204,9 @@ class="img-fluid rounded shadow">
 
 </section>
 
+<!-- Bootstrap JavaScript -->
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

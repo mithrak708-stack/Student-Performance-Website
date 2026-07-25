@@ -6,13 +6,12 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log("Student Performance Prediction System Loaded");
 
     // Animate Progress Bar
-    const progressBar = document.querySelector(".progress-bar");
+const progressBar = document.querySelector(".progress-bar");
 
-    if (progressBar) {
-        const value = progressBar.innerText;
-        progressBar.style.width = value;
-    }
-
+if (progressBar) {
+    const value = progressBar.innerText;
+    progressBar.style.width = value;
+}
     // Form Validation
     const form = document.querySelector("form");
 
