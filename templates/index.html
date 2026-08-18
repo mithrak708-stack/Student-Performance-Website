@@ -1,210 +1,342 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Student Performance Prediction</title>
+    <title>Student Performance Prediction</title>
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 
 <body>
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow">
+    <!-- ================= NAVBAR ================= -->
 
-<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow">
 
-<a class="navbar-brand fw-bold" href="#">
-🎓 Student Performance Prediction
-</a>
+        <div class="container">
 
-<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
-<span class="navbar-toggler-icon"></span>
-</button>
+            <a class="navbar-brand fw-bold" href="/">
+                🎓 Student Performance Prediction
+            </a>
 
-<div class="collapse navbar-collapse" id="menu">
+            <button class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#menu"
+                    aria-controls="menu"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
 
-<ul class="navbar-nav ms-auto">
+                <span class="navbar-toggler-icon"></span>
 
-<li class="nav-item">
-<a class="nav-link active" href="/">Home</a>
-</li>
+            </button>
 
-<li class="nav-item">
-<a class="nav-link" href="/about">About</a>
-</li>
+            <div class="collapse navbar-collapse" id="menu">
 
-<li class="nav-item">
-<a class="nav-link" href="/services">Services</a>
-</li>
+                <ul class="navbar-nav ms-auto">
 
-<li class="nav-item">
-<a class="nav-link" href="/contact">Contact</a>
-</li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">
+                            Home
+                        </a>
+                    </li>
 
-</ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">
+                            About
+                        </a>
+                    </li>
 
-</div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/services">
+                            Services
+                        </a>
+                    </li>
 
-</div>
-</nav>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact">
+                            Contact
+                        </a>
+                    </li>
 
-<!-- Hero -->
+                </ul>
 
-<section class="hero py-5">
+            </div>
 
-<div class="container">
+        </div>
 
-<div class="row align-items-center">
+    </nav>
 
-<div class="col-lg-6">
 
-<h1 class="display-4 fw-bold">
-Predict Student Performance
-</h1>
+    <!-- ================= HERO SECTION ================= -->
 
-<p class="lead mt-3">
-Machine Learning based Student Performance Prediction System.
-Predict academic performance using study habits and attendance.
-</p>
+    <section class="hero py-5">
 
-<a href="#predict" class="btn btn-warning btn-lg mt-3">
-Predict Now
-</a>
+        <div class="container">
 
-</div>
+            <div class="row align-items-center">
 
-<div class="col-lg-6 text-center">
+                <div class="col-lg-6">
 
-<img
-src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=700"
-class="img-fluid rounded shadow">
+                    <h1 class="display-4 fw-bold">
+                        Predict Student Performance
+                    </h1>
 
+                    <p class="lead mt-3">
+                        Machine Learning based Student Performance
+                        Prediction System. Predict academic performance
+                        using study habits, attendance and academic
+                        information.
+                    </p>
 
-</div>
+                    <a href="#predict" class="btn btn-warning btn-lg mt-3">
+                        Predict Now
+                    </a>
 
-</div>
+                </div>
 
-</div>
+                <div class="col-lg-6 text-center">
 
-</section>
+                    <img
+                        src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=700"
+                        class="img-fluid rounded shadow"
+                        alt="Students">
 
-<!-- Prediction Form -->
+                </div>
 
-<section id="predict" class="container my-5">
+            </div>
 
-<div class="card shadow-lg border-0">
+        </div>
 
-<div class="card-body p-5">
+    </section>
 
-<h2 class="text-center mb-4">
-📊 Student Performance Prediction
-</h2>
 
-<form action="/predict" method="POST">
+    <!-- ================= PREDICTION FORM ================= -->
 
-<div class="row">
+    <section id="predict" class="container my-5">
 
-<div class="col-md-6 mb-3">
+        <div class="card shadow-lg border-0">
 
-<label>Hours Studied</label>
+            <div class="card-body p-5">
 
-<input type="number" class="form-control" name="hours" required>
+                <h2 class="text-center mb-4">
+                    📊 Student Performance Prediction
+                </h2>
 
-</div>
 
-<div class="col-md-6 mb-3">
+                <!-- Flask Prediction Form -->
 
-<label>Attendance (%)</label>
+                <form action="/predict" method="POST">
 
-<input type="number" class="form-control" name="attendance" required>
+                    <div class="row">
 
-</div>
+                        <!-- Hours Studied -->
 
-<div class="col-md-6 mb-3">
+                        <div class="col-md-6 mb-3">
 
-<label>Previous Score</label>
+                            <label class="form-label">
+                                Hours Studied
+                            </label>
 
-<input type="number" class="form-control" name="previous_score" required>
+                            <input
+                                type="number"
+                                class="form-control"
+                                name="hours"
+                                min="0"
+                                step="0.1"
+                                placeholder="Enter study hours"
+                                required>
 
-</div>
+                        </div>
 
-<div class="col-md-6 mb-3">
 
-<label>Sleep Hours</label>
+                        <!-- Attendance -->
 
-<input type="number" class="form-control" name="sleep_hours" required>
+                        <div class="col-md-6 mb-3">
 
-</div>
+                            <label class="form-label">
+                                Attendance (%)
+                            </label>
 
-<div class="col-md-12 mb-3">
+                            <input
+                                type="number"
+                                class="form-control"
+                                name="attendance"
+                                min="0"
+                                max="100"
+                                step="0.1"
+                                placeholder="Enter attendance percentage"
+                                required>
 
-<label>Practice Papers Solved</label>
+                        </div>
 
-<input type="number" class="form-control" name="papers" required>
 
-</div>
+                        <!-- Previous Score -->
 
-<div class="text-center">
+                        <div class="col-md-6 mb-3">
 
-<button class="btn btn-primary btn-lg px-5">
-🚀 Predict Performance
-</button>
+                            <label class="form-label">
+                                Previous Score
+                            </label>
 
-</div>
+                            <input
+                                type="number"
+                                class="form-control"
+                                name="previous_score"
+                                min="0"
+                                max="100"
+                                step="0.1"
+                                placeholder="Enter previous score"
+                                required>
 
-{% if prediction %}
+                        </div>
 
-<div class="alert alert-success text-center mt-4">
 
-<h3>📊 Prediction Result</h3>
+                        <!-- Sleep Hours -->
 
-<p>
-<b>Performance Score:</b> {{ prediction }}
-</p>
+                        <div class="col-md-6 mb-3">
 
-<p>
-<b>Grade:</b> {{ grade }}
-</p>
+                            <label class="form-label">
+                                Sleep Hours
+                            </label>
 
-<p>
-<b>Status:</b> {{ status }}
-</p>
+                            <input
+                                type="number"
+                                class="form-control"
+                                name="sleep_hours"
+                                min="0"
+                                max="24"
+                                step="0.1"
+                                placeholder="Enter sleep hours"
+                                required>
 
-</div>
+                        </div>
 
-{% endif %}
 
-{% if prediction_text %}
+                        <!-- Practice Papers -->
 
-<div class="alert alert-danger text-center mt-4">
+                        <div class="col-md-12 mb-3">
 
-{{ prediction_text }}
+                            <label class="form-label">
+                                Practice Papers Solved
+                            </label>
 
-</div>
+                            <input
+                                type="number"
+                                class="form-control"
+                                name="papers"
+                                min="0"
+                                step="1"
+                                placeholder="Enter number of papers solved"
+                                required>
 
-{% endif %}
+                        </div>
 
-</div>
 
-</form>
+                        <!-- Predict Button -->
 
-</div>
+                        <div class="text-center mt-3">
 
-</div>
+                            <button
+                                type="submit"
+                                class="btn btn-primary btn-lg px-5">
 
-</section>
+                                🚀 Predict Performance
 
-<!-- Bootstrap JavaScript -->
-<script src="{{ url_for('static', filename='js/script.js') }}"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </form>
+
+
+                <!-- ================= PREDICTION RESULT ================= -->
+
+                {% if prediction is defined and prediction is not none %}
+
+                <div class="alert alert-success text-center mt-4">
+
+                    <h3>
+                        📊 Prediction Result
+                    </h3>
+
+                    <hr>
+
+                    <p class="fs-5">
+                        <b>Performance Score:</b>
+                        {{ prediction }}
+                    </p>
+
+                    <p class="fs-5">
+                        <b>Grade:</b>
+                        {{ grade }}
+                    </p>
+
+                    <p class="fs-5">
+                        <b>Status:</b>
+                        {{ status }}
+                    </p>
+
+                </div>
+
+                {% endif %}
+
+
+                <!-- ================= ERROR MESSAGE ================= -->
+
+                {% if prediction_text is defined and prediction_text %}
+
+                <div class="alert alert-danger text-center mt-4">
+
+                    <h5>
+                        ⚠️ Prediction Error
+                    </h5>
+
+                    <p class="mb-0">
+                        {{ prediction_text }}
+                    </p>
+
+                </div>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="bg-primary text-white text-center py-3">
+
+        <p class="mb-0">
+            Student Performance Prediction System Using AIML
+        </p>
+
+    </footer>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+    </script>
 
 </body>
+
 </html>
